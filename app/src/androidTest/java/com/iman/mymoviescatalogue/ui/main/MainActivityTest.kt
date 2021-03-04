@@ -26,17 +26,12 @@ class MainActivityTest {
     }
 
     @Test
-    fun loadListMovies() {
+    fun loadDetailMovies() {
         onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyMovies[0].title)))
         onView(withId(R.id.text_release)).check(matches(isDisplayed()))
         onView(withId(R.id.text_release)).check(matches(withText("Dirilis pada ${dummyMovies[0].release}")))
-    }
-
-    @Test
-    fun loadDetailMovies() {
-        onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.btn_watch)).perform(click())
     }
 

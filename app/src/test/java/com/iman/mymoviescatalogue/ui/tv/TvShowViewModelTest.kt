@@ -5,17 +5,17 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class TvViewModelTest {
-    private lateinit var viewModel: TvViewModel
+class TvShowViewModelTest {
+    private lateinit var showViewModel: TvShowViewModel
 
     @Before
     fun setUp() {
-        viewModel = TvViewModel()
+        showViewModel = TvShowViewModel()
     }
 
     @Test
     fun getTvShow() {
-        val tvEntities = viewModel.getTvShow()
+        val tvEntities = showViewModel.getTvShow()
         assertNotNull(tvEntities)
         assertEquals(10, tvEntities.size)
     }
