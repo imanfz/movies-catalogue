@@ -1,7 +1,9 @@
 package com.iman.mymoviescatalogue.data
 
-import java.util.*
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class MoviesEntity(
     var title: String,
     var release: String,
@@ -9,4 +11,4 @@ data class MoviesEntity(
     var overview: String,
     var genre: String,
     var imagePath: Int
-)
+) : Parcelable
