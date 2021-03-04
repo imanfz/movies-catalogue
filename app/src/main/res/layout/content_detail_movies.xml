@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:descendantFocusability="blocksDescendants"
     android:padding="16dp">
 
     <ImageView
@@ -26,6 +25,7 @@
         android:layout_marginTop="4dp"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_release"
         app:layout_constraintTop_toBottomOf="@+id/text_release"
@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/overview"
-        android:textColor="@color/teal_700"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

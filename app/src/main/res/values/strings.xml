@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyMoviesCatalogue</string>
+    <string name="app_name">My Movies Catalogue</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date">Dirilis pada %s</string>
@@ -12,4 +12,5 @@
     <string name="title_activity_detail_movies">DetailMoviesActivity</string>
     <string name="previous">Previous</string>
     <string name="watch">Tonton</string>
+    <string name="share">Share</string>
 </resources>
