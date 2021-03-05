@@ -12,7 +12,9 @@ import org.junit.rules.ExpectedException
 class DetailMoviesViewModelTest {
     private lateinit var viewModel: DetailMoviesViewModel
     private val dummyMovies = DataDummy.generateDummyMovies()[0]
-    private val title = dummyMovies.title
+    private val dummyTvShow = DataDummy.generateDummyTvShow()[0]
+    private val titleMovies = dummyMovies.title
+    private val titleTvShow = dummyTvShow.title
 
     @get:Rule
     var thrown = ExpectedException.none()
@@ -20,12 +22,12 @@ class DetailMoviesViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailMoviesViewModel()
-        viewModel.setSelectedMovies(title)
     }
 
 
     @Test
     fun getMovies() {
+        viewModel.setSelectedMovies(titleMovies)
         val moviesEntity = viewModel.getMovies(1)
         assertNotNull(moviesEntity)
         assertEquals(dummyMovies.title, moviesEntity.title)
@@ -37,20 +39,9 @@ class DetailMoviesViewModelTest {
     }
 
     @Test
-    fun getTvShow() {
-        val tvShowEntity = viewModel.getMovies(2)
-        assertNotNull(tvShowEntity)
-        assertEquals(dummyMovies.title, tvShowEntity.title)
-        assertEquals(dummyMovies.imagePath, tvShowEntity.imagePath)
-        assertEquals(dummyMovies.genre, tvShowEntity.genre)
-        assertEquals(dummyMovies.overview, tvShowEntity.overview)
-        assertEquals(dummyMovies.user_score, tvShowEntity.user_score)
-        assertEquals(dummyMovies.release, tvShowEntity.release)
-    }
-
-    @Test
     @Throws(AssertionError::class)
     fun getMoviesTitle() {
+        viewModel.setSelectedMovies(titleMovies)
         val moviesEntity = viewModel.getMovies(1)
         thrown.expect(AssertionError::class.java)
         thrown.expectMessage("expected:<Alita: Battle Angel> but was:<null>")
@@ -60,5 +51,18 @@ class DetailMoviesViewModelTest {
         assertEquals(dummyMovies.overview, moviesEntity.overview)
         assertEquals(dummyMovies.user_score, moviesEntity.user_score)
         assertEquals(dummyMovies.release, moviesEntity.release)
+    }
+
+    @Test
+    fun getTvShow() {
+        viewModel.setSelectedMovies(titleTvShow)
+        val tvShowEntity = viewModel.getMovies(2)
+        assertNotNull(tvShowEntity)
+        assertEquals(dummyTvShow.title, tvShowEntity.title)
+        assertEquals(dummyTvShow.imagePath, tvShowEntity.imagePath)
+        assertEquals(dummyTvShow.genre, tvShowEntity.genre)
+        assertEquals(dummyTvShow.overview, tvShowEntity.overview)
+        assertEquals(dummyTvShow.user_score, tvShowEntity.user_score)
+        assertEquals(dummyTvShow.release, tvShowEntity.release)
     }
 }
