@@ -1,4 +1,4 @@
-package com.iman.mymoviescatalogue.ui.tv
+package com.iman.mymoviescatalogue.ui.tv_show
 
 import com.iman.mymoviescatalogue.data.MoviesEntity
 

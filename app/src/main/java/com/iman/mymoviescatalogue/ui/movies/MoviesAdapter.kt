@@ -14,6 +14,7 @@ import com.iman.mymoviescatalogue.ui.detail.DetailsMoviesActivity
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
     private var listmovies = ArrayList<MoviesEntity>()
+    private val flag = 1
 
     fun setMovies(movies: List<MoviesEntity>?) {
         if (movies == null) return
@@ -34,14 +35,15 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
     override fun getItemCount(): Int = listmovies.size
 
 
-    class MoviesViewHolder(private val binding: ItemsMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MoviesViewHolder(private val binding: ItemsMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movies: MoviesEntity) {
             with(binding) {
                 tvItemTitle.text = movies.title
                 tvItemDate.text = itemView.resources.getString(R.string.date, movies.release)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailsMoviesActivity::class.java)
-                    intent.putExtra(DetailsMoviesActivity.EXTRA_COURSE, movies)
+                    intent.putExtra(DetailsMoviesActivity.EXTRA_MOVIES, movies.title)
+                    intent.putExtra(DetailsMoviesActivity.EXTRA_FLAG, flag)
                     itemView.context.startActivity(intent)
                 }
                 imgPoster.loadImage(movies.imagePath)

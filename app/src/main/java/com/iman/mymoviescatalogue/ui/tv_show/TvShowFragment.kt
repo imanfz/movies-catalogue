@@ -1,4 +1,4 @@
-package com.iman.mymoviescatalogue.ui.tv
+package com.iman.mymoviescatalogue.ui.tv_show
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,10 +31,10 @@ class TvShowFragment : Fragment(), TvShowFragmentCallback {
 
         if (activity != null) {
             val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[TvShowViewModel::class.java]
-            val courses = viewModel.getTvShow()
+            val tvShow = viewModel.getTvShow()
 
             val adapter = TvShowAdapter(this)
-            adapter.setMovies(courses)
+            adapter.setMovies(tvShow)
 
             with(fragmentTvShowBinding.rvTvShow) {
                 layoutManager = LinearLayoutManager(context)
@@ -42,6 +42,11 @@ class TvShowFragment : Fragment(), TvShowFragmentCallback {
                 this.adapter = adapter
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _fragmentTvShowBinding = null
     }
 
     override fun onShareClick(movies: MoviesEntity) {

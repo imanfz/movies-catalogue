@@ -1,4 +1,4 @@
-package com.iman.mymoviescatalogue.ui.tv
+package com.iman.mymoviescatalogue.ui.tv_show
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,11 +14,12 @@ import com.iman.mymoviescatalogue.ui.detail.DetailsMoviesActivity
 
 class TvShowAdapter(private val callback: TvShowFragmentCallback) : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     private var listtvshow = ArrayList<MoviesEntity>()
+    private val flag = 2
 
-    fun setMovies(movies: List<MoviesEntity>?) {
-        if (movies == null) return
+    fun setMovies(tvShow: List<MoviesEntity>?) {
+        if (tvShow == null) return
         this.listtvshow.clear()
-        this.listtvshow.addAll(movies)
+        this.listtvshow.addAll(tvShow)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
@@ -27,25 +28,26 @@ class TvShowAdapter(private val callback: TvShowFragmentCallback) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        val course = listtvshow[position]
-        holder.bind(course)
+        val tvShow = listtvshow[position]
+        holder.bind(tvShow)
     }
 
     override fun getItemCount(): Int = listtvshow.size
 
 
     inner class TvShowViewHolder(private val binding: ItemsTvShowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(tvshow: MoviesEntity) {
+        fun bind(tvShow: MoviesEntity) {
             with(binding) {
-                tvItemTitle.text = tvshow.title
-                tvItemDate.text = itemView.resources.getString(R.string.date, tvshow.release)
+                tvItemTitle.text = tvShow.title
+                tvItemDate.text = itemView.resources.getString(R.string.date, tvShow.release)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailsMoviesActivity::class.java)
-                    intent.putExtra(DetailsMoviesActivity.EXTRA_COURSE, tvshow)
+                    intent.putExtra(DetailsMoviesActivity.EXTRA_MOVIES, tvShow.title)
+                    intent.putExtra(DetailsMoviesActivity.EXTRA_FLAG, flag)
                     itemView.context.startActivity(intent)
                 }
-                imgShare.setOnClickListener { callback.onShareClick(tvshow) }
-                imgPoster.loadImage(tvshow.imagePath)
+                imgShare.setOnClickListener { callback.onShareClick(tvShow) }
+                imgPoster.loadImage(tvShow.imagePath)
             }
         }
 

@@ -1,34 +1,35 @@
-package com.iman.mymoviescatalogue.ui.movies
+package com.iman.mymoviescatalogue.ui.tv_show
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.ExpectedException
 
-class MoviesViewModelTest {
-    private lateinit var viewModel: MoviesViewModel
+import org.junit.Assert.*
+import org.junit.Rule
+import org.junit.rules.ExpectedException
+import java.lang.AssertionError
+
+class TvShowViewModelTest {
+    private lateinit var showViewModel: TvShowViewModel
 
     @get:Rule
     var thrown = ExpectedException.none()
 
     @Before
     fun setUp() {
-        viewModel = MoviesViewModel()
+        showViewModel = TvShowViewModel()
     }
 
     @Test
-    fun getMovies() {
-        val moviesEntities = viewModel.getMovies()
-        assertNotNull(moviesEntities)
-        assertEquals(10, moviesEntities.size)
+    fun getTvShow() {
+        val tvEntities = showViewModel.getTvShow()
+        assertNotNull(tvEntities)
+        assertEquals(10, tvEntities.size)
     }
 
     @Test
     @Throws(AssertionError::class)
-    fun getMoviesOutRange() {
-        val moviesEntities = viewModel.getMovies()
+    fun getTvShowOutRange() {
+        val moviesEntities = showViewModel.getTvShow()
         thrown.expect(AssertionError::class.java)
         thrown.expectMessage("expected:<11> but was:<10>")
         assertEquals(11, moviesEntities.size)
@@ -36,10 +37,11 @@ class MoviesViewModelTest {
 
     @Test
     @Throws(AssertionError::class)
-    fun getMoviesTestNull() {
-        val moviesEntities = viewModel.getMovies()
+    fun getTvShowTestNull() {
+        val moviesEntities = showViewModel.getTvShow()
         thrown.expect(AssertionError::class.java)
         thrown.expectMessage("expected:<null> but was:<10>")
         assertEquals(null, moviesEntities.size)
     }
+
 }

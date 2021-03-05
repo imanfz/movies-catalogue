@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.iman.mymoviescatalogue.R
 import com.iman.mymoviescatalogue.ui.movies.MoviesFragment
-import com.iman.mymoviescatalogue.ui.tv.TvShowFragment
+import com.iman.mymoviescatalogue.ui.tv_show.TvShowFragment
 
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     companion object {

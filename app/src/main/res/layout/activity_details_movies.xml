@@ -23,18 +23,6 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/text_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/text_release"
-            app:layout_constraintTop_toBottomOf="@+id/text_release"
-            tools:text="@string/title" />
-
-        <TextView
             android:id="@+id/text_release"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +32,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_poster"
             tools:text="@string/date" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            app:layout_constraintEnd_toStartOf="@id/text_score"
+            app:layout_constraintStart_toStartOf="@+id/text_release"
+            app:layout_constraintTop_toBottomOf="@+id/text_release"
+            tools:text="@string/title" />
+
+        <TextView
+            android:id="@+id/text_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_star"
+            android:padding="30dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_poster"
+            app:layout_constraintBottom_toBottomOf="@id/text_genre"
+            tools:text="@string/score" />
 
         <TextView
             android:id="@+id/text_genre"
@@ -74,7 +89,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/overview"
-            android:textColor="@color/teal_700"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="parent"

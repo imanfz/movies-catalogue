@@ -1,20 +1,20 @@
 package com.iman.mymoviescatalogue.ui.movies
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.iman.mymoviescatalogue.R
 import com.iman.mymoviescatalogue.databinding.FragmentMoviesBinding
 
 class MoviesFragment : Fragment() {
-    private lateinit var fragmentMoviesBinding: FragmentMoviesBinding
+    private var _fragmentMoviesBinding : FragmentMoviesBinding? = null
+    private val fragmentMoviesBinding get() = _fragmentMoviesBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        fragmentMoviesBinding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
+        _fragmentMoviesBinding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
         return fragmentMoviesBinding.root
     }
 
@@ -33,5 +33,10 @@ class MoviesFragment : Fragment() {
                 adapter = academyAdapter
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _fragmentMoviesBinding = null
     }
 }
