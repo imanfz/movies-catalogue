@@ -37,18 +37,28 @@ class DetailMoviesViewModelTest {
     }
 
     @Test
-    //@Throws(UninitializedPropertyAccessException::class)
-    fun getMoviesNull() {
-        val moviesEntity = viewModel.getMovies(2)
-        assertNotNull(moviesEntity)
-        assertEquals(dummyMovies.title, moviesEntity.title)
+    fun getTvShow() {
+        val tvShowEntity = viewModel.getMovies(2)
+        assertNotNull(tvShowEntity)
+        assertEquals(dummyMovies.title, tvShowEntity.title)
+        assertEquals(dummyMovies.imagePath, tvShowEntity.imagePath)
+        assertEquals(dummyMovies.genre, tvShowEntity.genre)
+        assertEquals(dummyMovies.overview, tvShowEntity.overview)
+        assertEquals(dummyMovies.user_score, tvShowEntity.user_score)
+        assertEquals(dummyMovies.release, tvShowEntity.release)
+    }
+
+    @Test
+    @Throws(AssertionError::class)
+    fun getMoviesTitle() {
+        val moviesEntity = viewModel.getMovies(1)
+        thrown.expect(AssertionError::class.java)
+        thrown.expectMessage("expected:<Alita: Battle Angel> but was:<null>")
+        assertEquals(dummyMovies.title, null)
         assertEquals(dummyMovies.imagePath, moviesEntity.imagePath)
         assertEquals(dummyMovies.genre, moviesEntity.genre)
         assertEquals(dummyMovies.overview, moviesEntity.overview)
         assertEquals(dummyMovies.user_score, moviesEntity.user_score)
         assertEquals(dummyMovies.release, moviesEntity.release)
-/*        thrown.expect(UninitializedPropertyAccessException::class.java)
-        thrown.expectMessage("lateinit property movies has not been initialized")*/
-
     }
 }

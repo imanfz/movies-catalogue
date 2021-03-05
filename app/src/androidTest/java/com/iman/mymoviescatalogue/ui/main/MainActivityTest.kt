@@ -32,7 +32,14 @@ class MainActivityTest {
         onView(withId(R.id.text_title)).check(matches(withText(dummyMovies[0].title)))
         onView(withId(R.id.text_release)).check(matches(isDisplayed()))
         onView(withId(R.id.text_release)).check(matches(withText("Dirilis pada ${dummyMovies[0].release}")))
+        onView(withId(R.id.text_score)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_score)).check(matches(withText(dummyMovies[0].user_score.toString())))
+        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_genre)).check(matches(withText("Genre: ${dummyMovies[0].genre}")))
         onView(withId(R.id.btn_watch)).perform(click())
+        onView(withId(R.id.text_overviews)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_overviews)).check(matches(withText(dummyMovies[0].overview)))
+
     }
 
     @Test
@@ -51,6 +58,12 @@ class MainActivityTest {
         onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[1].title)))
         onView(withId(R.id.text_release)).check(matches(isDisplayed()))
         onView(withId(R.id.text_release)).check(matches(withText("Dirilis pada ${dummyTvShow[1].release}")))
+        onView(withId(R.id.text_score)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_score)).check(matches(withText(dummyTvShow[1].user_score.toString())))
+        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_genre)).check(matches(withText("Genre: ${dummyTvShow[1].genre}")))
         onView(withId(R.id.btn_watch)).perform(click())
+        onView(withId(R.id.text_overviews)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_overviews)).check(matches(withText(dummyTvShow[1].overview)))
     }
 }

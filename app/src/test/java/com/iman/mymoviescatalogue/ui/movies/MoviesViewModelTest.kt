@@ -25,14 +25,6 @@ class MoviesViewModelTest {
         assertEquals(10, moviesEntities.size)
     }
 
-    @Test
-    @Throws(AssertionError::class)
-    fun getMoviesOutRange() {
-        val moviesEntities = viewModel.getMovies()
-        thrown.expect(AssertionError::class.java)
-        thrown.expectMessage("expected:<11> but was:<10>")
-        assertEquals(11, moviesEntities.size)
-    }
 
     @Test
     @Throws(AssertionError::class)
